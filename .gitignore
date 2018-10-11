@@ -1,0 +1,7 @@
+db/lounges.db
+*.pyc
+client_secrets.json
+*-oauth2.json
+env/*
+static/
+google-oauth.json

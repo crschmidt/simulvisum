@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+  Copyright 2018 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "chat/style.css" %}">
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script> 
+        var chatId = {{id}}; 
+        var recentMessages = {{messages|safe}};    
+    </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.4/seedrandom.min.js">
+</script>
+    <script src="{% static "linkify/linkify.min.js" %}"></script>
+    <script src="{% static "linkify/linkify-string.min.js" %}"></script>
+    <script src="{% static "linkify/linkify-html.min.js" %}"></script>
+    <script src="{% static "chat/index.js" %}"></script>
+
+</head>
+
+<body>
+    <div class="mycontainer" id="container">
+            <div class="mypanel">
+                <div class="panel-body body-panel">
+                    <ul class="chat">
+                    </ul>
+                </div>
+                <div class="mypanelfooter">
+                    <div style="width: 40px; float:right;">
+                        <button id="btn-chat">
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 24px; height: 24px;"><g><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path><path d="M0 0h24v24H0z" fill="none"></path></g></svg>
+                        </button>
+                    </div>
+                    <div id="input" width="80%" contenteditable="" tabindex="0" style="background-color: #333; margin-bottom: 5px; min-height: 18px; border-bottom: 1px solid rgb(39, 147, 230); color: white;"></div>
+                </div>
+    </div>
+</div>
+<div style="display:none" id="username_form">
+  What nickname do you want to use in chat?
+  <br /> 
+  <input id="username"> <button id="btn-name">
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 24px; height: 24px;"><g><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path><path d="M0 0h24v24H0z" fill="none"></path></g></svg>
+                        </button>
+</div>                       
+<script id="message" type="text/template">
+    <li id="||id||" class="right clearfix">
+    <div class="chat-container">
+    <div class="hexagon">||firstletter||</div>
+    <div class="chat-text">
+        <span class="author">||user|| </span> <span>||body||</span>
+        </div>
+    </li>
+</script>
+</body>
+</html>
