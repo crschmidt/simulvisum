@@ -1,0 +1,28 @@
+<head>
+<script>
+var id = {{id}};
+var currentText = '';
+function checkForUpdate() {
+ var t = document.getElementById('text');
+ if (currentText != t.value) {
+    update(t.value);
+    currentText = t.value;
+ }
+ console.log(t.value);
+}
+function update(t) {
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "/text/"+id+"/change", true);
+xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+xhttp.send("text="+encodeURI(t))
+
+}
+setInterval(checkForUpdate, 5000);
+</script>
+</head>
+<body>
+<form id="foo">
+<textarea style="width: 600px; height:400px" id="text">{{text}}</textarea>
+</form>
+</body>

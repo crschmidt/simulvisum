@@ -41,7 +41,7 @@ SECRET_KEY = '*vdpa5o%n84pc&9hw@hohqnop2j&j_u54foks11_=7#1gtt-o$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['new.crschmidt.net', 'chrisplaysgames.com', 'watch.chrisplaysgames.com']
+ALLOWED_HOSTS = ['new.crschmidt.net', 'chrisplaysgames.com', 'watch.chrisplaysgames.com', 'localhost']
 
 
 # Application definition
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'chat',
+    'text',
 ]
 
 MIDDLEWARE = [

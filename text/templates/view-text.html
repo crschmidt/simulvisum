@@ -1,0 +1,20 @@
+<head>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+var id = {{id}};
+
+
+function checkForUpdate() {
+       $.get('/text/'+id+"/text", updateResponse);
+}
+function updateResponse(data, status) {
+    var d= JSON.parse(data);
+    var t = d.text.replace(/\n/g, "<br />");
+    $("#content").html(t);
+}
+setInterval(checkForUpdate, 5000);
+checkForUpdate();
+</script>
+<body>
+ <div id="content"></div>
+</body>

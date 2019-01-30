@@ -21,6 +21,7 @@ admin.autodiscover()
 
 import main.views
 import chat.views
+import text.views
 
 urlpatterns = [
     url(r'^$', main.views.home),
@@ -30,5 +31,9 @@ urlpatterns = [
     url(r'^cache/(?P<video_id>.+)', main.views.cache_video_web),
     url(r'^chat/(?P<id>[0-9]+)/message$', chat.views.message),
     url(r'^chat/(?P<id>[0-9]+)/$', chat.views.chat),
+    url(r'^text/(?P<id>[0-9]+)/edit$', text.views.edit),
+    url(r'^text/(?P<id>[0-9]+)/text$', text.views.text),
+    url(r'^text/(?P<id>[0-9]+)/change$', text.views.change),
+    url(r'^text/(?P<id>[0-9]+)/$', text.views.view),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
